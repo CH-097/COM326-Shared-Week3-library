@@ -13,6 +13,17 @@ namespace Library
         public string ISBN;
 
 
+
+
+        public Book(string title, string author, string isbn)
+        {
+            this.Title = title;
+            this.Author = author;
+            this.ISBN = isbn;
+            
+        }
+
+
         public void DisplayInfo()
         {
             Console.WriteLine($"Book title: {Title}");

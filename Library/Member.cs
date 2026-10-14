@@ -6,7 +6,7 @@ namespace Library
         private int memberId;
         private string name;
         private string address;
-        private int phone;
+        private string phone;
 
         // Public properties
         public int MemberId
@@ -30,8 +30,8 @@ namespace Library
             get { return name; }
             set
             {
-                // Ensure name does not contain any numbers
-                if (!value.Any(char.IsDigit) && value != "")
+                // Ensure name does not contain any numbers and is not blank
+                if (!value.Any(char.IsDigit) && !string.IsNullOrWhiteSpace(value))
                 {
                     name = value;
                 }
@@ -48,26 +48,26 @@ namespace Library
 
             set
             {
-                // Ensure name does not contain any numbers
-                if (!value.Any(char.IsDigit) && value != "")
+                // Address may contain numbers (house numbers). Only ensure it's not blank.
+                if (!string.IsNullOrWhiteSpace(value))
                 {
                     address = value;
                 }
                 else
                 {
-                    Console.WriteLine("Error: Member address cannot be blank or contain numbers.");
+                    Console.WriteLine("Error: Member address cannot be blank.");
                 }
             }
         }
 
-        public int Phone
+        public string Phone
         {
             get { return phone; }
             set { phone = value; }
         }
 
         // Constructor using standard C# casing conventions
-        public Member(int memberId, string memberName, string memberAddress, int memberPhone)
+        public Member(int memberId, string memberName, string memberAddress, string memberPhone)
         {
             this.MemberId = memberId;
             this.Name = memberName;
